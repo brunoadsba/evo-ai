@@ -52,6 +52,7 @@ import src.api.mcp_server_routes
 import src.api.tool_routes
 import src.api.client_routes
 import src.api.a2a_routes
+from src.api.whatsapp_routes.routes import router as whatsapp_router
 
 # Add the root directory to PYTHONPATH
 root_dir = Path(__file__).parent.parent
@@ -114,6 +115,7 @@ app.include_router(chat_router, prefix=API_PREFIX)
 app.include_router(session_router, prefix=API_PREFIX)
 app.include_router(agent_router, prefix=API_PREFIX)
 app.include_router(a2a_router, prefix=API_PREFIX)
+app.include_router(whatsapp_router)
 
 # Inicializa o OpenTelemetry para Langfuse
 init_otel()

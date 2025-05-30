@@ -131,10 +131,14 @@ class Settings(BaseSettings):
     LANGFUSE_SECRET_KEY: str = os.getenv("LANGFUSE_SECRET_KEY", "")
     OTEL_EXPORTER_OTLP_ENDPOINT: str = os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT", "")
 
+    # AI API Keys
+    GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
         case_sensitive = True
+        extra = "allow"  # Permite variáveis extras
 
 
 def get_settings() -> Settings:
@@ -142,3 +146,11 @@ def get_settings() -> Settings:
 
 
 settings = get_settings()
+
+class WhatsAppSettings(BaseSettings):
+    EVOLUTION_API_KEY: str = "evo_whatsapp_integration_2024"
+    EVOLUTION_API_URL: str = "http://localhost:8080"
+    ERGOANALIST_API_URL: str = "https://api-evoai.evoapicloud.com/api/v1/a2a/6468417b-cc79-4aed-92f5-1c57203fed8a"
+
+    class Config:
+        env_file = ".env"

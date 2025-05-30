@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   api:
+    build: .
     image: evo-ai-api:latest
     depends_on:
       - postgres
@@ -81,9 +82,47 @@ services:
         limits:
           cpus: "0.5"
           memory: 500M
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD:-default_password}
+    networks:
+      - evo_network
+
+  evolution-api:
+    image: atendai/evolution-api:latest
+    container_name: evolution-api
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - AUTHENTICATION_API_KEY=evo_whatsapp_integration_2024
+      - DATABASE_ENABLED=false
+      - DATABASE_CONNECTION_URL=mongodb://mongodb:27017/evolution
+      - DATABASE_TYPE=mongodb
+    volumes:
+      - ./evolution-instances:/evolution/instances
+    networks:
+      - evo_network
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - evo_network
 
 volumes:
   postgres_data:
     name: ${POSTGRES_VOLUME_NAME:-evo-ai-postgres-data}
   redis_data:
     name: ${REDIS_VOLUME_NAME:-evo-ai-redis-data}
+  mongodb_data:
+    name: evolution-mongodb-data
+  evolution-instances:
+
+networks:
+  evo_network:
+    driver: bridge
