@@ -130,3 +130,17 @@ celerybeat-schedule
 Thumbs.db
 
 uv.lock
+
+# Arquivos de sessão e cache do WhatsApp
+tokens/
+wpp-logs.txt
+wppconnect/tokens/
+wppconnect/qrcode.png
+**/qrcode.png
+**/wpp-logs.txt
+
+# n8n data
+n8n-data/
+
+# Whatsapp Venom
+whatsapp-venom/
