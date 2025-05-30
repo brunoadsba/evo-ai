@@ -144,3 +144,7 @@ n8n-data/
 
 # Whatsapp Venom
 whatsapp-venom/
+
+# Node.js
+node_modules/
+**/node_modules/
