@@ -1,0 +1,12 @@
+{
+  "install": "make install",
+  "start": "",
+  "terminals": [
+    {
+      "name": "server",
+      "command": "make run",
+      "description": "Inicia o servidor FastAPI"
+    }
+  ],
+  "agentCanUpdateSnapshot": true
+}

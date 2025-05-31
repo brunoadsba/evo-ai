@@ -1,0 +1,27 @@
+# Node.js
+node_modules/
+
+# Arquivos de sessão e cache
+*.log
+logs/
+*.cache
+.cache/
+tokens/
+sessions/
+**/qrcode.png
+**/wpp-logs.txt
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.development
+.env.test
+.env.production 
